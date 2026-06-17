@@ -12,7 +12,7 @@ public class ConverterRouter
     public void Route(ConversionRequest request)
     {
         if(!File.Exists(request.InputPath))
-            throw new Exception("Input file does not exist");
+            throw new FileNotFoundException("Input file does not exist");
 
         string inputFormat = FormatHelper.GetExtensionNameFromPath(request.InputPath);
         string outputFormat = FormatHelper.GetExtensionNameFromPath(request.OutputPath);
@@ -21,7 +21,7 @@ public class ConverterRouter
             throw new Exception("Input and output formats are the same.");
 
         var converter = converters.FirstOrDefault(c => c.CanConvert(inputFormat, outputFormat)) 
-            ?? throw new Exception($"No converter found for {inputFormat} → {outputFormat}");
+            ?? throw new Exception($"No converter found for {inputFormat} -> {outputFormat}");
 
         converter.Convert(request);
     }

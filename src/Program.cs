@@ -2,6 +2,7 @@
 using OmniConvert.Converters;
 using OmniConvert.Installation;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 internal class Program
 {
@@ -80,16 +81,26 @@ internal class Program
 
                 case "--install":
                     RegisterToContextMenu();
-                    break;
+                    return (null, null);
                 
                 case "--uninstall":
                     RemoveFromContextMenu();
-                    break;
+                    return (null, null);
 
                 case "--reinstall":
                     RemoveFromContextMenu();
                     RegisterToContextMenu();
-                    break; 
+                    return (null, null);
+
+                case "-h":
+                case "--help":
+                    ShowHelp();
+                    return (null, null);
+
+                case "-v":
+                case "--version":
+                    Console.WriteLine($"OmniConvert {GetVersion()}");
+                    return (null, null);
             }
         }
 
@@ -139,5 +150,40 @@ internal class Program
         }
 
         return silentPath;
+    }
+
+    static void ShowHelp()
+    {
+        Console.WriteLine($"""
+    OmniConvert {GetVersion()}
+
+    Usage:
+    omniconvert -i <input-file> -o <output-file-or-extension>
+
+    Options:
+    -i, --input <file>       Input file
+    -o, --output <value>     Output file path or extension
+
+    Installation:
+    --install                Add OmniConvert to the Windows context menu
+    --uninstall              Remove OmniConvert from the Windows context menu
+    --reinstall              Reinstall the context menu integration
+
+    Other:
+    -h, --help               Show this help message
+
+    Examples:
+    omniconvert -i image.png -o jpg
+    omniconvert -i image.png -o converted.jpg
+    omniconvert --install
+    """);
+    }
+
+    static string GetVersion()
+    {
+        return Assembly.GetExecutingAssembly()
+            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
+            .InformationalVersion
+            ?? "unknown";
     }
 }
