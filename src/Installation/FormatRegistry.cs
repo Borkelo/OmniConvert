@@ -8,6 +8,7 @@ public static class FormatRegistry
         ["png"] = ["jpg", "webp"],
         ["jpg"] = ["png", "webp"],
         ["jpeg"] = ["png", "webp"],
-        ["webp"] = ["jpg", "png"],
+        ["webp"] = ["png", "jpg"],
+        ["svg"] = ["png", "jpg", "webp"],
     };
 }

@@ -12,6 +12,7 @@ public class ImageConverter : IConverter
         ["jpg"] = MagickFormat.Jpeg,
         ["png"] = MagickFormat.Png,
         ["webp"] = MagickFormat.WebP,
+        ["svg"] = MagickFormat.Svg,
     };
 
     public bool CanConvert(string inputFormat, string outputFormat)
@@ -26,7 +27,7 @@ public class ImageConverter : IConverter
         if (File.Exists(outputPath))
             throw new Exception($"Output file already exists: {outputPath}");
 
-        string outputFormat = FormatHelper.GetExtensionFromPath(request.OutputPath!);
+        string outputFormat = FormatHelper.GetExtensionNameFromPath(request.OutputPath!);
 
         MagickFormat magickFormat = Formats[outputFormat];
 
@@ -35,13 +36,4 @@ public class ImageConverter : IConverter
         image.Write(outputPath);
     }
     
-    /*
-    private static string GenerateOutputPath(ConversionRequest request)
-    {
-        return Path.Combine(
-            Path.GetDirectoryName(request.InputPath)!,
-            $"{Path.GetFileNameWithoutExtension(request.InputPath)}.{request.OutputFormat}"
-        );
-    }
-    */
 }

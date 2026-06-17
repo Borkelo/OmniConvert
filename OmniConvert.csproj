@@ -1,10 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <Version>1.0.0</Version>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <OutputType>Exe</OutputType>
+
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Silent'">
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>$(AssemblyName)w</AssemblyName>
+    <DefineConstants>SILENT_BUILD</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

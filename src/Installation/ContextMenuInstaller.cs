@@ -7,11 +7,11 @@ public static class ContextMenuInstaller
 {
     public static void Install(string exePath)
     {
-        Console.WriteLine($"Installing context menu for current user: {exePath}");
-
         if (!OperatingSystem.IsWindows())
         {
+            #if !SILENT_BUILD
             Console.WriteLine("Context menu installation is only supported on Windows.");
+            #endif
             return;
         }
 
@@ -45,24 +45,24 @@ public static class ContextMenuInstaller
                 if (commandKey != null)
                 {
                     string command = $"\"{exePath}\" -i \"%1\" -o {output}";
-                    Console.WriteLine($"Registering: {command}");
 
+                    #if !SILENT_BUILD
+                    Console.WriteLine($"Registering: {command}");
+                    #endif
                     commandKey.SetValue("", command);
                 }
             }
-        }
-        
-        Console.WriteLine("Context menu installation complete.");
+        }    
     }   
 
 
     public static void Uninstall()
     {
-        Console.WriteLine("Uninstalling context menu from current user...");
-
         if (!OperatingSystem.IsWindows())
         {
+            #if !SILENT_BUILD
             Console.WriteLine("Context menu installation is only supported on Windows.");
+            #endif
             return;
         }
 
@@ -77,10 +77,8 @@ public static class ContextMenuInstaller
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to remove registry key for .{inputExt}: {ex.Message}");
+                throw new Exception($"Failed to remove registry key for .{inputExt}: {ex.Message}");
             }
-        }
-        
-        Console.WriteLine("Context menu uninstallation complete.");
+        }      
     }
 }

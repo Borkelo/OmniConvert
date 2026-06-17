@@ -11,8 +11,11 @@ public class ConverterRouter
 
     public void Route(ConversionRequest request)
     {
-        string inputFormat = FormatHelper.GetExtensionFromPath(request.InputPath);
-        string outputFormat = FormatHelper.GetExtensionFromPath(request.OutputPath);
+        if(!File.Exists(request.InputPath))
+            throw new Exception("Input file does not exist");
+
+        string inputFormat = FormatHelper.GetExtensionNameFromPath(request.InputPath);
+        string outputFormat = FormatHelper.GetExtensionNameFromPath(request.OutputPath);
         
         if (inputFormat == outputFormat)
             throw new Exception("Input and output formats are the same.");
