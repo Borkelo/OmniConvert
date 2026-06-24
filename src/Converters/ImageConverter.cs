@@ -13,11 +13,12 @@ public class ImageConverter : IConverter
         ["png"] = MagickFormat.Png,
         ["webp"] = MagickFormat.WebP,
         ["svg"] = MagickFormat.Svg,
+        ["bmp"] = MagickFormat.Bmp,
     };
 
     public bool CanConvert(string inputFormat, string outputFormat)
     {
-        return Formats.ContainsKey(inputFormat.ToLower()) && Formats.ContainsKey(outputFormat.ToLower());
+        return Formats.ContainsKey(inputFormat) && Formats.ContainsKey(outputFormat);
     }
 
     public void Convert(ConversionRequest request)

@@ -17,7 +17,8 @@ internal class Program
         {
             var converters = new List<IConverter>
             {
-                new ImageConverter()
+                new ImageConverter(),
+                new VideoAudioConverter(),
             };
 
             var router = new ConverterRouter(converters);
