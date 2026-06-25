@@ -14,6 +14,7 @@ public class ImageConverter : IConverter
         ["webp"] = MagickFormat.WebP,
         ["svg"] = MagickFormat.Svg,
         ["bmp"] = MagickFormat.Bmp,
+        ["avif"] = MagickFormat.Avif,
     };
 
     public bool CanConvert(string inputFormat, string outputFormat)

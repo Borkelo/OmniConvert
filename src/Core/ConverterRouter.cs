@@ -21,7 +21,7 @@ public class ConverterRouter
             throw new Exception("Input and output formats are the same.");
 
         var converter = converters.FirstOrDefault(c => c.CanConvert(inputFormat, outputFormat)) 
-            ?? throw new Exception($"No converter found for {inputFormat} -> {outputFormat}");
+                        ?? throw new Exception($"No converter found for {inputFormat} -> {outputFormat}");
 
         converter.Convert(request);
     }

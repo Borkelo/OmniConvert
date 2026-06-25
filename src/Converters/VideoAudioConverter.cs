@@ -9,7 +9,8 @@ public class VideoAudioConverter : IConverter
     {
         "mp4",
         "mp3",
-        "wav"
+        "wav",
+        "mts",
     };
 
     public bool CanConvert(string inputFormat, string outputFormat)
@@ -17,7 +18,7 @@ public class VideoAudioConverter : IConverter
         return Formats.Contains(inputFormat) && Formats.Contains(outputFormat);
     }
 
-    // TODO: support different audio/video codecs
+    // TODO: support different audio/video codecs - GPU conversion (context menu should prioritize GPU)
     public void Convert(ConversionRequest request)
     {
         FFMpegArguments

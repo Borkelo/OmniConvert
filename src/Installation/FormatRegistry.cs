@@ -12,10 +12,12 @@ public static class FormatRegistry
         ["svg"] = ["png", "jpg", "webp"],
         ["bmp"] = ["png", "jpg", "webp"],
         ["gif"] = ["png", "jpg", "webp"],
+        ["avif"] = ["png", "jpg", "webp"],
 
         // VIDEO AND AUDIO
         ["mp4"] = ["mp3", "wav"],
         ["mp3"] = ["wav"],
         ["wav"] = ["mp3"],
+        ["mts"] = ["mp4", "mp3", "wav"],
     };
 }
