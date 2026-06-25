@@ -19,5 +19,5 @@ The purpose of this program is to be able to quickly convert file formats throug
 
 ## Dependencies:
 
-- dotnet 10.0
+- .NET Framework
 - ffmpeg
