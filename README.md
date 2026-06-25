@@ -20,4 +20,4 @@ The purpose of this program is to be able to quickly convert file formats throug
 ## Dependencies:
 
 - .NET Framework
-- ffmpeg
+- FFmpeg
