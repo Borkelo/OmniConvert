@@ -19,5 +19,5 @@ The purpose of this program is to be able to quickly convert file formats throug
 
 ## Dependencies:
 
-- .NET Framework
-- FFmpeg
+- [.NET Framework](https://dotnet.microsoft.com/en-us/download)
+- [FFmpeg](https://www.ffmpeg.org/download.html)
