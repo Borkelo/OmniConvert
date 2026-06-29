@@ -11,6 +11,7 @@ public class VideoAudioConverter : IConverter
         "mp3",
         "wav",
         "mts",
+        "ogg",
     };
 
     public bool CanConvert(string inputFormat, string outputFormat)

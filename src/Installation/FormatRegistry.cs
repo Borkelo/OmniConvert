@@ -19,5 +19,6 @@ public static class FormatRegistry
         ["mp3"] = ["wav"],
         ["wav"] = ["mp3"],
         ["mts"] = ["mp4", "mp3", "wav"],
+        ["ogg"] = ["mp3", "wav"],
     };
 }
